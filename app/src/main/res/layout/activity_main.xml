@@ -29,8 +29,8 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-
-                <RelativeLayout
+                <include layout="@layout/panel_lateral"/>
+               <!-- <RelativeLayout
                     android:id="@+id/rlPanelLat"
                     android:layout_width="232dp"
                     android:layout_height="match_parent"
@@ -109,7 +109,7 @@
                         android:text="Ruta"
                         android:textAlignment="viewStart"
                         android:textSize="18sp" />
-                </RelativeLayout>
+                </RelativeLayout>-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -119,7 +119,8 @@
                     <RelativeLayout
                         android:id="@+id/rlMedTitulos"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp">
+                        android:layout_height="30dp"
+                        android:background="@color/primaryDarkColor">
 
                         <TextView
                             android:id="@+id/listRuta"
@@ -128,7 +129,8 @@
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
                             android:text="Ruta"
-                            android:textAlignment="center" />
+                            android:textAlignment="center"
+                            android:textColor="@color/titulos" />
 
                         <TextView
                             android:id="@+id/lvOrden"
@@ -137,7 +139,8 @@
                             android:layout_centerVertical="true"
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@+id/listRuta"
-                            android:text="Orden" />
+                            android:text="Orden"
+                            android:textColor="@color/titulos" />
 
                         <TextView
                             android:id="@+id/lvCodigo"
@@ -148,7 +151,8 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@+id/lvOrden"
                             android:text="Código"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/titulos" />
 
                         <TextView
                             android:id="@+id/lvNombre"
@@ -159,7 +163,8 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@+id/lvCodigo"
                             android:text="Nombre"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/titulos" />
 
                         <TextView
                             android:id="@+id/lvMedidor"
@@ -170,7 +175,8 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@+id/lvNombre"
                             android:text="Medidor"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/titulos" />
 
                         <TextView
                             android:id="@+id/lvPartida"
@@ -181,7 +187,8 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@+id/lvMedidor"
                             android:text="Partida"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/titulos" />
 
 
                         <TextView
@@ -192,7 +199,8 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@+id/lvPartida"
                             android:text="Est. Anterior"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/titulos" />
 
                         <TextView
                             android:id="@+id/lvAct"
@@ -202,7 +210,8 @@
                             android:layout_marginStart="12dp"
                             android:layout_toEndOf="@+id/lvAnt"
                             android:text="Est. Actual"
-                            android:textAlignment="textStart" />
+                            android:textAlignment="textStart"
+                            android:textColor="@color/titulos" />
 
 
                     </RelativeLayout>

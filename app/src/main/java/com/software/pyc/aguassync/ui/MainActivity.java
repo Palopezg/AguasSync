@@ -29,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.software.pyc.aguassync.ui.CargaMedida.OnSimpleDialogListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -63,11 +64,12 @@ public class MainActivity extends AppCompatActivity implements OnSimpleDialogLis
     public void actualizarDatos(){
 
 
-
         c = medidaOpenHelper.getAllMedidas(consulta.getOrderBy(),consulta.getWhere());
         listMedida = medidaOpenHelper.getListaMedidas(c);
 
+
         medidaAdapter = new MedidaAdapter(getApplicationContext(), listMedida);
+
         listViewMedidas.setAdapter(medidaAdapter);
 
         medidaAdapter.notifyDataSetChanged();
@@ -346,6 +348,7 @@ public class MainActivity extends AppCompatActivity implements OnSimpleDialogLis
         }
         if (id == R.id.action_sync_local) {
             Toast.makeText(getApplicationContext(),"Subir cambios al servidor",Toast.LENGTH_SHORT).show();
+            SyncAdapter.sincronizarAhora(this, true);
             return true;
         }
 

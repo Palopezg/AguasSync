@@ -20,7 +20,7 @@ public class Constantes {
      * URLs del Web Service
      */
     public static final String GET_URL = IP + PUERTO_HOST + "/PhpAguas/web/obtener_medida.php";
-    public static final String INSERT_URL = IP + PUERTO_HOST + "/PhpAguas/web/insertar_medida.php";
+    public static final String UPDATE_URL = IP + PUERTO_HOST + "/PhpAguas/web/update_medida.php";
 
     /**
      * Campos de las respuestas Json

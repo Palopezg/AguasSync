@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="232dp"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/rlPanelLat"
+        android:layout_width="232dp"
+        android:layout_height="match_parent"
+        android:background="@color/primaryDarkColor"
+        android:elevation="@dimen/universal_margin">
+
+        <TextView
+            android:id="@+id/tvUser"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginHorizontal="@dimen/universal_margin"
+            android:layout_marginVertical="@dimen/universal_margin"
+            android:text="Usuario"
+            android:textAppearance="@style/TextAppearance.Compat.Notification" />
+
+        <Spinner
+            android:id="@+id/spRuta"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/tvUser"
+            android:layout_marginHorizontal="@dimen/universal_margin"
+            android:layout_marginTop="46dp"
+            android:layout_marginVertical="@dimen/universal_margin"
+            android:layout_toEndOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/spRuta"
+            android:layout_marginHorizontal="@dimen/universal_margin"
+            android:layout_marginVertical="@dimen/universal_margin"
+            android:text="Busqueda"
+            android:textAlignment="viewStart"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spBusqueda"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView2"
+            android:layout_marginHorizontal="@dimen/universal_margin"
+            android:layout_marginVertical="@dimen/universal_margin" />
+
+        <EditText
+            android:id="@+id/etBusqueda2"
+            style="?android:attr/editTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spBusqueda"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="@dimen/universal_margin"
+            android:layout_marginVertical="@dimen/universal_margin"
+            android:ems="10"
+            android:hint="Criterio de busqueda"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnLogOut"
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="@dimen/universal_margin"
+            android:layout_marginVertical="@dimen/universal_margin"
+            android:text="LogOut" />
+
+        <Button
+            android:id="@+id/btnBusqueda"
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etBusqueda2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginHorizontal="@dimen/universal_margin"
+            android:layout_marginVertical="@dimen/universal_margin"
+            android:text="Buscar" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/tvUser"
+            android:layout_marginHorizontal="@dimen/universal_margin"
+            android:layout_marginVertical="@dimen/universal_margin"
+            android:text="Ruta"
+            android:textAlignment="viewStart"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

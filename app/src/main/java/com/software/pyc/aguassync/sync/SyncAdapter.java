@@ -53,17 +53,17 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
      */
     private static final String[] PROJECTION = new String[]{
             ContractMedida.Columnas._ID,
-            ContractMedida.Columnas.ID_REMOTA,
             ContractMedida.Columnas.RUTA,
             ContractMedida.Columnas.ORDEN,
             ContractMedida.Columnas.CODIGO,
             ContractMedida.Columnas.NOMBRE,
             ContractMedida.Columnas.MEDIDOR,
             ContractMedida.Columnas.PARTIDA,
-            ContractMedida.Columnas.ESTADO_ACT,
             ContractMedida.Columnas.ESTADO_ANT,
+            ContractMedida.Columnas.ESTADO_ACT,
             ContractMedida.Columnas.FECHA_ACT,
-            ContractMedida.Columnas.USUARIO
+            ContractMedida.Columnas.USUARIO,
+            ContractMedida.Columnas.ID_REMOTA
     };
 
 /*    // Indices para las columnas indicadas en la proyección
@@ -176,8 +176,8 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                 VolleySingleton.getInstance(getContext()).addToRequestQueue(
                         new JsonObjectRequest(
-                                Request.Method.POST,
-                                Constantes.INSERT_URL,
+                                Request.Method.PUT,
+                                Constantes.UPDATE_URL,
                                 Utilidades.deCursorAJSONObject(c),
                                 new Response.Listener<JSONObject>() {
                                     @Override

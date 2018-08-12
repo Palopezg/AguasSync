@@ -117,7 +117,7 @@ public class MedidaDBHelper extends SQLiteOpenHelper {
         return listaMedida;
 
     }
-
+//MAster
     public boolean cargaEstado(String id,String estAct, String cargado){
 
         Date currentTime = Calendar.getInstance().getTime();
@@ -127,6 +127,9 @@ public class MedidaDBHelper extends SQLiteOpenHelper {
         cv.put(ContractMedida.Columnas.ACTUALIZADO ,cargado);
         cv.put(ContractMedida.Columnas.PENDIENTE_INSERCION ,"1");
         cv.put(ContractMedida.Columnas.FECHA_INSERCION , String.valueOf(currentTime));
+        cv.put(ContractMedida.Columnas.FECHA_ACT , String.valueOf(currentTime));
+        cv.put(ContractMedida.Columnas.USUARIO , "Usuario");
+
         sqLiteDatabase.update(ContractMedida.MEDIDA, cv,"_id="+id,null);
         return true;
     }

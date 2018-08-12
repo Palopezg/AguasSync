@@ -6,5 +6,7 @@
     <dimen name="size_fab">56dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <dimen name="tituloDialog">20dp</dimen>
+
     <dimen name="universal_margin">16dp</dimen>
 </resources>
