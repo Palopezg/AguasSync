@@ -2,6 +2,7 @@ package com.software.pyc.aguassync.sync;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
+import android.app.ProgressDialog;
 import android.content.AbstractThreadedSyncAdapter;
 import android.content.ContentProviderClient;
 import android.content.ContentProviderOperation;
@@ -15,12 +16,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.gson.Gson;
+import com.software.pyc.aguassync.ui.MainActivity;
 import com.software.pyc.aguassync.utils.Utilidades;
 import com.software.pyc.aguassync.utils.Constantes;
 import com.software.pyc.aguassync.R;
@@ -47,6 +50,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
     ContentResolver resolver;
     private Gson gson = new Gson();
+    Context context;
+
+
 
     /**
      * Proyección para las consultas
@@ -77,6 +83,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
     public SyncAdapter(Context context, boolean autoInitialize) {
         super(context, autoInitialize);
         resolver = context.getContentResolver();
+        this.context = context;
     }
 
     /**
@@ -128,7 +135,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
                         new Response.ErrorListener() {
                             @Override
                             public void onErrorResponse(VolleyError error) {
-                                Log.d(TAG, error.getMessage());
+                                //Log.d(TAG, error.getMessage());
+                                Log.d(TAG, "Error Volley: " + error.getMessage());
+                                //Log.d(TAG, "networkResponse Volley: " +error.networkResponse.toString());
                             }
                         }
                 )
@@ -176,7 +185,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
                 VolleySingleton.getInstance(getContext()).addToRequestQueue(
                         new JsonObjectRequest(
-                                Request.Method.PUT,
+                                Request.Method.POST,
                                 Constantes.UPDATE_URL,
                                 Utilidades.deCursorAJSONObject(c),
                                 new Response.Listener<JSONObject>() {
@@ -211,6 +220,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
 
         } else {
             Log.i(TAG, "No se requiere sincronización");
+            //Toast.makeText(this.context,"No se requiere sincronizacion",Toast.LENGTH_SHORT).show();
         }
         c.close();
     }
@@ -263,6 +273,9 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         v.put(ContractMedida.Columnas.ID_REMOTA, idRemota);
 
         resolver.update(uri, v, selection, selectionArgs);
+
+
+
     }
 
     /**
@@ -494,5 +507,7 @@ public class SyncAdapter extends AbstractThreadedSyncAdapter {
         Log.i(TAG, "Cuenta de usuario obtenida.");
         return newAccount;
     }
+
+
 
 }

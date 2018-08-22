@@ -49,6 +49,8 @@ public class ProviderMedida extends ContentProvider{
         return true;
     }
 
+
+
     @Override
     public Cursor query(
             Uri uri,
@@ -56,6 +58,7 @@ public class ProviderMedida extends ContentProvider{
             String selection,
             String[] selectionArgs,
             String sortOrder) {
+
 
         // Obtener base de datos
         SQLiteDatabase db = medidaDBHelper.getWritableDatabase();

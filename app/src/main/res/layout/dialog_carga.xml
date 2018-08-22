@@ -63,7 +63,7 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Ingrese nuevo estado"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName|number"
             android:paddingBottom="@dimen/universal_margin"
             android:paddingTop="@dimen/universal_margin" />
 

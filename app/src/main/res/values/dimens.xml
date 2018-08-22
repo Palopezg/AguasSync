@@ -9,4 +9,5 @@
     <dimen name="tituloDialog">20dp</dimen>
 
     <dimen name="universal_margin">16dp</dimen>
+    <dimen name="title_margin">6dp</dimen>
 </resources>

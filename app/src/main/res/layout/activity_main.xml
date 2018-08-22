@@ -124,35 +124,40 @@
 
                         <TextView
                             android:id="@+id/listRuta"
-                            android:layout_width="30dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/title_margin"
                             android:text="Ruta"
                             android:textAlignment="center"
-                            android:textColor="@color/titulos" />
+                            android:textColor="@color/titulos"
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/lvOrden"
-                            android:layout_width="40dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
+                            android:layout_alignBaseline="@+id/listRuta"
+                            android:layout_alignBottom="@+id/listRuta"
+                            android:layout_marginLeft="@dimen/title_margin"
                             android:layout_toEndOf="@+id/listRuta"
                             android:text="Orden"
-                            android:textColor="@color/titulos" />
+                            android:textColor="@color/titulos"
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/lvCodigo"
-                            android:layout_width="50dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignBaseline="@+id/lvOrden"
                             android:layout_alignBottom="@+id/lvOrden"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginLeft="@dimen/title_margin"
                             android:layout_toEndOf="@+id/lvOrden"
                             android:text="Código"
                             android:textAlignment="textStart"
-                            android:textColor="@color/titulos" />
+                            android:textColor="@color/titulos"
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/lvNombre"
@@ -160,66 +165,82 @@
                             android:layout_height="wrap_content"
                             android:layout_alignBaseline="@+id/lvCodigo"
                             android:layout_alignBottom="@+id/lvCodigo"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginLeft="@dimen/title_margin"
                             android:layout_toEndOf="@+id/lvCodigo"
                             android:text="Nombre"
                             android:textAlignment="textStart"
-                            android:textColor="@color/titulos" />
+                            android:textColor="@color/titulos"
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/lvMedidor"
                             android:layout_width="80dp"
                             android:layout_height="wrap_content"
-                            android:layout_alignBaseline="@+id/lvAnt"
-                            android:layout_alignBottom="@+id/lvAnt"
-                            android:layout_marginStart="12dp"
+                            android:layout_alignBaseline="@+id/lvNombre"
+                            android:layout_alignBottom="@+id/lvNombre"
+                            android:layout_marginLeft="@dimen/title_margin"
                             android:layout_toEndOf="@+id/lvNombre"
                             android:text="Medidor"
                             android:textAlignment="textStart"
-                            android:textColor="@color/titulos" />
+                            android:textColor="@color/titulos"
+                            android:textSize="24sp" />
 
                         <TextView
                             android:id="@+id/lvPartida"
-                            android:layout_width="50dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignBaseline="@+id/lvAnt"
                             android:layout_alignBottom="@+id/lvAnt"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginLeft="@dimen/title_margin"
                             android:layout_toEndOf="@+id/lvMedidor"
                             android:text="Partida"
                             android:textAlignment="textStart"
-                            android:textColor="@color/titulos" />
+                            android:textColor="@color/titulos"
+                            android:textSize="24sp" />
 
 
                         <TextView
                             android:id="@+id/lvAnt"
-                            android:layout_width="80dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
+                            android:layout_alignBaseline="@+id/lvMedidor"
+                            android:layout_alignBottom="@+id/lvMedidor"
                             android:layout_toEndOf="@+id/lvPartida"
                             android:text="Est. Anterior"
                             android:textAlignment="textStart"
-                            android:textColor="@color/titulos" />
+                            android:textColor="@color/titulos"
+                            android:textSize="24sp"
+                            android:layout_marginLeft="@dimen/title_margin"/>
 
                         <TextView
                             android:id="@+id/lvAct"
-                            android:layout_width="80dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="12dp"
+                            android:layout_alignBaseline="@+id/lvAnt"
+                            android:layout_alignBottom="@+id/lvAnt"
                             android:layout_toEndOf="@+id/lvAnt"
                             android:text="Est. Actual"
                             android:textAlignment="textStart"
-                            android:textColor="@color/titulos" />
+                            android:textColor="@color/titulos"
+                            android:textSize="24sp"
+                            android:layout_marginLeft="@dimen/title_margin"/>
 
 
                     </RelativeLayout>
 
+                    <!-- Recycler -->
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/reciclador"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="3dp"
+                        android:scrollbars="vertical"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+<!--
                     <ListView
                         android:id="@+id/lvMedidas"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" />
+                        android:layout_height="match_parent" />-->
                 </LinearLayout>
 
             </LinearLayout>
