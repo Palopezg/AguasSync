@@ -28,7 +28,7 @@ import com.software.pyc.aguassync.provider.Medida;
 public class CargaMedida extends DialogFragment  {
 
 
-    String estAnt, estAct, id;
+    String estAnt, estAct, id, medidor;
 
     // Interfaz de comunicación
     OnSimpleDialogListener listener;
@@ -37,6 +37,7 @@ public class CargaMedida extends DialogFragment  {
     public void Carga (Medida m){
         estAnt = m.getEstadoAnterior();
         estAct = m.getEstadoActual();
+        medidor = m.getMedidor();
         id = m.getId();
 
     }
@@ -81,13 +82,16 @@ public class CargaMedida extends DialogFragment  {
         Button actualizar = (Button)v.findViewById(R.id.btnDialogCarga);
         final EditText estadoActual = (EditText)v.findViewById(R.id.etDialogEstAct);
         TextView estadoAnterior = (TextView)v.findViewById(R.id.tvDialogEstAnt);
+        TextView tvmedidor = (TextView)v.findViewById(R.id.tvDialogMedidor);
 
         // Cargo los valores existentes
-        TextView ea = (TextView)v.findViewById(R.id.itemAct);
+/*        TextView ea = (TextView)v.findViewById(R.id.itemAct);
         TextView en = (TextView)v.findViewById(R.id.itemAnt);
+        TextView med = (TextView)v.findViewById(R.id.itemMedidor);*/
 
         estadoActual.setText(estAct);
         estadoAnterior.setText(estAnt);
+        tvmedidor.setText(medidor);
 
 
 

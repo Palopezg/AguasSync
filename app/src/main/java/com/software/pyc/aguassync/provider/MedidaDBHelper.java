@@ -45,7 +45,7 @@ public class MedidaDBHelper extends SQLiteOpenHelper {
                 ContractMedida.Columnas.ACTUALIZADO + " TEXT, " +
                 ContractMedida.Columnas.USUARIO + " TEXT, " +
 
-                ContractMedida.Columnas.ID_REMOTA + " TEXT UNIQUE," +
+                ContractMedida.Columnas.ID_REMOTA + " TEXT," +
                 ContractMedida.Columnas.ESTADO + " INTEGER NOT NULL DEFAULT "+ ContractMedida.ESTADO_OK+"," +
                 ContractMedida.Columnas.FECHA_INSERCION + " TEXT," +
                 ContractMedida.Columnas.PENDIENTE_INSERCION + " INTEGER NOT NULL DEFAULT 0)";
@@ -67,6 +67,7 @@ public class MedidaDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
     // Trae Todos los datos de la base
     public Cursor getAllMedidas(String orderBy, String busqueda) {
 
@@ -80,7 +81,46 @@ public class MedidaDBHelper extends SQLiteOpenHelper {
                         null,
                         null,
                         orderBy);
+
+
         return c;
+    }
+
+    // Trae Todos los datos de la base
+    public Cursor getAllMedidas(String orderBy, String busqueda, String limite) {
+
+        Cursor c = null;
+        c = this.getReadableDatabase()
+                .query(
+                        ContractMedida.MEDIDA,
+                        null,
+                        busqueda,
+                        null,
+                        null,
+                        null,
+                        orderBy,
+                        limite);
+
+
+        return c;
+    }
+    // Trae Todos los datos de la base
+    public int getCantAllMedidas(String orderBy, String busqueda, String limite) {
+
+        Cursor c = null;
+        c = this.getReadableDatabase()
+                .query(
+                        ContractMedida.MEDIDA,
+                        null,
+                        busqueda,
+                        null,
+                        null,
+                        null,
+                        orderBy
+                        );
+
+
+        return c.getCount();
     }
 
     // Trae Todos los datos de la base
@@ -117,7 +157,7 @@ public class MedidaDBHelper extends SQLiteOpenHelper {
         return listaMedida;
 
     }
-
+//MAster
     public boolean cargaEstado(String id,String estAct, String cargado){
 
         Date currentTime = Calendar.getInstance().getTime();
@@ -127,6 +167,9 @@ public class MedidaDBHelper extends SQLiteOpenHelper {
         cv.put(ContractMedida.Columnas.ACTUALIZADO ,cargado);
         cv.put(ContractMedida.Columnas.PENDIENTE_INSERCION ,"1");
         cv.put(ContractMedida.Columnas.FECHA_INSERCION , String.valueOf(currentTime));
+        cv.put(ContractMedida.Columnas.FECHA_ACT , String.valueOf(currentTime));
+        cv.put(ContractMedida.Columnas.USUARIO , "Usuario");
+
         sqLiteDatabase.update(ContractMedida.MEDIDA, cv,"_id="+id,null);
         return true;
     }

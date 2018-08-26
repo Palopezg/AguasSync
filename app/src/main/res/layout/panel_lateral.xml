@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/fondo_gris">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/rlPanelLat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/fondo_gris"
+        android:elevation="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!--        <Button
+            android:id="@+id/btnLogOut"
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginHorizontal="@dimen/universal_margin"
+            android:layout_marginVertical="@dimen/universal_margin"
+            android:text="LogOut" />-->
+
+        <EditText
+            android:id="@+id/etIngresarMedida"
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="31dp"
+            android:background="@android:color/background_light"
+            android:digits="1234567890 "
+            android:ems="10"
+            android:focusedByDefault="false"
+            android:hint="Ingrese la nueva medida"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@color/borde_item"
+            app:layout_constraintBottom_toTopOf="@+id/tvPLEstadoAnterior"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPLEstadoAnterior"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:layout_marginStart="8dp"
+            android:text="Estado Anterior: "
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/item_medium"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/tvObservaciones"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etIngresarMedida" />
+
+        <TextView
+            android:id="@+id/tvPLestAnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="666"
+            android:textSize="@dimen/item_medium"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toEndOf="@+id/tvPLEstadoAnterior"
+            app:layout_constraintTop_toBottomOf="@+id/etIngresarMedida"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="93dp" />
+
+        <TextView
+            android:id="@+id/tvObservaciones"
+            android:layout_width="208dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="22dp"
+            android:text="Observaciones:"
+            android:textColor="@color/borde_item"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/etObservaciones"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPLEstadoAnterior" />
+
+        <EditText
+            android:id="@+id/etObservaciones"
+            android:layout_width="274dp"
+            android:layout_height="115dp"
+            android:layout_marginBottom="32dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="1dp"
+            android:background="@android:color/background_light"
+            android:ems="10"
+            android:focusedByDefault="false"
+            android:hint="Ingrese las observaciones..."
+            android:inputType="textPersonName"
+            android:textColor="@color/borde_item"
+            android:textSize="@dimen/item_medium"
+            app:layout_constraintBottom_toTopOf="@+id/btnPLAceptar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvObservaciones" />
+
+        <Button
+            android:id="@+id/btnPLAceptar"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="269dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/mainVerde"
+            android:elevation="5dp"
+            android:text="Aceptar"
+            android:textColor="@color/borde_item"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/etObservaciones" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="962dp" />
+
+</android.support.constraint.ConstraintLayout>

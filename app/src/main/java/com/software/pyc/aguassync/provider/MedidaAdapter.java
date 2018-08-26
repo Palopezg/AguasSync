@@ -7,6 +7,7 @@ package com.software.pyc.aguassync.provider;
         import android.view.ViewGroup;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
+        import android.widget.ImageView;
         import android.widget.RelativeLayout;
         import android.widget.TextView;
 
@@ -22,6 +23,7 @@ public class MedidaAdapter  extends ArrayAdapter<Medida> {
     public MedidaAdapter(Context context, List<Medida> objects) {
         super(context,0, objects);
     }
+
 
 
 
@@ -48,6 +50,7 @@ public class MedidaAdapter  extends ArrayAdapter<Medida> {
         TextView partida = (TextView) itemView.findViewById(R.id.itemPartida);
         TextView estAnt  = (TextView) itemView.findViewById(R.id.itemAnt);
         TextView estAct  = (TextView) itemView.findViewById(R.id.itemAct);
+
 
         //TextView btn = (TextView) itemView.findViewById(R.id.content_request_btn) ;
 
@@ -82,6 +85,8 @@ public class MedidaAdapter  extends ArrayAdapter<Medida> {
         estAct.setText(medida.getEstadoActual());
         //rl.setBackgroundColor(colorFondo);
         //btn.setBackgroundColor(colorFondo);
+
+
 
         return itemView;
     }

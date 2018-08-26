@@ -13,7 +13,6 @@ import org.json.JSONObject;
 public class Utilidades {
     // Indices para las columnas indicadas en la proyección
     public static final int COLUMNA_ID = 0;
-    public static final int COLUMNA_ID_REMOTA = 0;
     public static final int COLUMNA_RUTA = 1;
     public static final int COLUMNA_ORDEN = 2;
     public static final int COLUMNA_CODIGO = 3;
@@ -24,6 +23,7 @@ public class Utilidades {
     public static final int COLUMNA_ESTADO_ACT = 8;
     public static final int COLUMNA_FECHA_ACT= 9;
     public static final int COLUMNA_USUARIO = 10;
+    public static final int COLUMNA_ID_REMOTA = 11;
 
 
     /**
@@ -45,39 +45,23 @@ public class Utilidades {
      */
     public static JSONObject deCursorAJSONObject(Cursor c) {
         JSONObject jObject = new JSONObject();
-        String ruta;
-        String orden;
-        String codigo;
-        String nombre;
-        String medidor;
-        String partida;
-        String estado_ant;
+
         String estado_act;
         String fecha_act;
         String usuario;
+        String idRemota;
 
-        ruta = c.getString(COLUMNA_RUTA);
-        orden = c.getString(COLUMNA_ORDEN);
-        codigo = c.getString(COLUMNA_CODIGO);
-        nombre = c.getString(COLUMNA_NOMBRE);
-        medidor = c.getString(COLUMNA_MEDIDOR);
-        partida = c.getString(COLUMNA_PARTIDA);
-        estado_ant = c.getString(COLUMNA_ESTADO_ANT);
         estado_act = c.getString(COLUMNA_ESTADO_ACT);
         fecha_act = c.getString(COLUMNA_FECHA_ACT);
         usuario = c.getString(COLUMNA_USUARIO);
+        idRemota = c.getString(COLUMNA_ID_REMOTA);
 
         try {
-            jObject.put(ContractMedida.Columnas.RUTA, ruta);
-            jObject.put(ContractMedida.Columnas.ORDEN, orden);
-            jObject.put(ContractMedida.Columnas.CODIGO, codigo);
-            jObject.put(ContractMedida.Columnas.NOMBRE, nombre);
-            jObject.put(ContractMedida.Columnas.MEDIDOR, medidor);
-            jObject.put(ContractMedida.Columnas.PARTIDA, partida);
-            jObject.put(ContractMedida.Columnas.ESTADO_ACT, estado_act);
-            jObject.put(ContractMedida.Columnas.ESTADO_ANT, estado_ant);
-            jObject.put(ContractMedida.Columnas.FECHA_ACT, fecha_act);
-            jObject.put(ContractMedida.Columnas.USUARIO, usuario);
+
+            jObject.put(Constantes.ESTADO_ACT, estado_act);
+             jObject.put(Constantes.FECHA_ACT, fecha_act);
+            jObject.put(Constantes.USUARIO, usuario);
+            jObject.put(Constantes.ID_MEDIDA, idRemota);
         } catch (JSONException e) {
             e.printStackTrace();
         }
