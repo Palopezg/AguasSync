@@ -1,9 +1,11 @@
 package com.software.pyc.aguassync.ui;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 
@@ -20,7 +22,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -55,6 +60,9 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
     static String rutaSeleccionada;
     static String opcionBusqueda;
     static String opcionBusquedaAux;
+    static int posAnterior=1;
+    static  View viewAnterior = null;
+    static  Medida currentMedida;
     Toolbar toolbar;
 
     static Boolean firstTime = false;
@@ -69,22 +77,42 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
 
     MedidaDBHelper medidaOpenHelper = new MedidaDBHelper(this,ContractMedida.DATABASE_NAME,null,1);
     static int posicionList =1;
+    static int paddinList=0;
+    static int posElegido=-1;
+    Boolean flag=true;
 
 
 
     public void actualizarDatos(){
 
         c = medidaOpenHelper.getAllMedidas(consulta.getOrderBy(),consulta.getWhere(),consulta.getLimite());
+        //c = medidaOpenHelper.getAllMedidas(consulta.getOrderBy(),consulta.getWhere());
         consulta.setFin(medidaOpenHelper.getCantAllMedidas(consulta.getOrderBy(),consulta.getWhere(),consulta.getLimite()));
         TextView usuario = findViewById(R.id.tvUser);
         usuario.setText("Pagina "+String.valueOf(consulta.getPagActual())+" de "+String.valueOf(consulta.getPaginas()));
 
         //consulta.setFin(c.getCount());
 
-        adapter = new AdaptadorDeMedida(this);
+        //adapter = new AdaptadorDeMedida(this);
         adapter.swapCursor(c);
-        recyclerView.setAdapter(adapter);
-        recyclerView.getLayoutManager().scrollToPosition(posicionList);
+
+
+
+        if (flag) {
+            recyclerView.setAdapter(adapter);
+            flag=false;
+        }
+        //recyclerView.getLayoutManager().scrollToPosition(posicionList);
+/*        if (posElegido != -1){
+            recyclerView.findViewHolderForAdapterPosition(posElegido).itemView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.borde_seleccion));
+            recyclerView.findViewHolderForAdapterPosition(posElegido).itemView.setElevation(8);
+        }*/
+
+        if (viewAnterior != null){
+            viewAnterior.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.borde_seleccion));
+            viewAnterior.setElevation(8);
+        }
+        //recyclerView.getLayoutManager().scrollVerticallyBy(posicionList,null,null);
 
 
     }
@@ -103,8 +131,10 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbarPrincipal);
         setSupportActionBar(toolbar);
+
+
 
         recyclerView = findViewById(R.id.reciclador);
         //recyclerView.setHasFixedSize(true);
@@ -118,6 +148,26 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
 
         recyclerView.setAdapter(adapter);
         getSupportLoaderManager().initLoader(0, null, this);
+
+        Button btnCargaMedida = findViewById(R.id.btnPLAceptar);
+
+
+        btnCargaMedida.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText etCargaMedida = findViewById(R.id.etIngresarMedida);
+
+                if (etCargaMedida.getText().toString().trim().equalsIgnoreCase("")) {
+                    Toast.makeText(getApplicationContext(),"Ingrese un valor nuevo...",Toast.LENGTH_SHORT).show();
+
+                }else {
+                    boolean controlCarga = medidaOpenHelper.cargaEstado(currentMedida.getId(), etCargaMedida.getText().toString(), "TRUE");
+                    posicionList = layoutManager.findFirstVisibleItemPosition();
+                    actualizarDatos();
+
+                }
+            }
+        });
 
 
 
@@ -136,6 +186,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
                     if (consulta.previusPg()) {
                         posicionList = consulta.getCanMostrar()-layoutManager.getChildCount();
                         actualizarDatos();
+                        recyclerView.getLayoutManager().scrollToPosition(posicionList);
                     }
                 } else if (!recyclerView.canScrollVertically(1)) {
                     //onScrolledToBottom();
@@ -143,6 +194,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
                     if (consulta.nextPg()) {
                         posicionList = 1;
                         actualizarDatos();
+                        recyclerView.getLayoutManager().scrollToPosition(posicionList);
                         //Do pagination.. i.e. fetch new data
                     }
                 }
@@ -223,17 +275,43 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
                     new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                         @Override public void onItemClick(View view, int position) {
 
+                            RelativeLayout rl =  findViewById(R.id.rlItem);
+
                             List<Medida> listaMedida = adapter.getLsMedida();
 
-                            Medida currentMedida = listaMedida.get(position);
+                            currentMedida = listaMedida.get(position);
+                            posElegido = position;
 
-                            CargaMedida d = new CargaMedida();
-                            d.Carga(currentMedida);
-                            d.show(getFragmentManager(),"");
+
+                            if (viewAnterior != null) {
+                                viewAnterior.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.borde_item));
+                                viewAnterior.setElevation(0);
+                            }
+                            viewAnterior = view;
+
+                            view.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.borde_seleccion));
+                            view.setElevation(8);
+                           // recyclerView.findViewHolderForAdapterPosition(position).itemView.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.borde_seleccion));
+                           // recyclerView.findViewHolderForAdapterPosition(position).itemView.setElevation(8);
+
+                            TextView panelEstAnt = findViewById(R.id.tvPLestAnt);
+                            EditText panelEstAct = findViewById(R.id.etIngresarMedida);
+                            panelEstAnt.setText(currentMedida.getEstadoAnterior());
+                            panelEstAct.setText(currentMedida.getEstadoActual());
+
+
+
+
+//                            CargaMedida d = new CargaMedida();
+//                            d.Carga(currentMedida);
+//                            d.show(getFragmentManager(),"");
                             //recyclerView.getLayoutManager().;
 
 
-                            posicionList = layoutManager.findFirstVisibleItemPosition();
+
+//                            posicionList = layoutManager.findFirstVisibleItemPosition();
+//                            paddinList = layoutManager.computeVerticalScrollOffset(null);
+                            //paddinList = recyclerView.getPaddingTop();
 
 
                             //Toast.makeText(getApplicationContext(),"OnClick: " + recyclerView.getLayoutManager().,Toast.LENGTH_SHORT).show();
@@ -248,7 +326,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
             );
 
 
-        final Button logOut = findViewById(R.id.btnLogOut);
+       // final Button logOut = findViewById(R.id.btnLogOut);
 
         //Borrar la base para probar
        // medidaOpenHelper.onDelete();
@@ -363,12 +441,12 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
             }
         });
 
-        logOut.setOnClickListener(new View.OnClickListener() {
+/*        logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //logOut();
             }
-        });
+        });*/
 
        // actualizarDatos();
 
@@ -397,7 +475,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
 
 
         //Implementacion del spinner busqueda
-        Button btnBusqueda = findViewById(R.id.btnBusqueda);
+        ImageButton btnBusqueda = findViewById(R.id.btnBusqueda);
         Spinner spinnerBusqueda =  findViewById(R.id.spBusqueda);
         final EditText etbusqueda = findViewById(R.id.etBusqueda2);
 

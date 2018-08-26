@@ -25,7 +25,7 @@ public class ConsultaMedida {
     int ini = 1;
     int fin = 21;
 
-    int canMostrar = 50;
+    int canMostrar = 20;
 
     int offset = ini;
 
@@ -79,6 +79,7 @@ public class ConsultaMedida {
             pagActual ++;
             respuesta  = true;
         }
+        next = false;
         return respuesta;
     }
 
@@ -189,7 +190,7 @@ public class ConsultaMedida {
 
     public void setOffset(int os) {
         this.offset = os;
-        if (next){os = (os-3);}
+        if (next){os = (os-2);}
         if (pagActual==paginas){
             this.limite = String.valueOf(os)+","+String.valueOf(canMostrar*2);
         }else {

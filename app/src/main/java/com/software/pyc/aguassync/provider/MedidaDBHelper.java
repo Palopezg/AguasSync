@@ -67,6 +67,25 @@ public class MedidaDBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+    // Trae Todos los datos de la base
+    public Cursor getAllMedidas(String orderBy, String busqueda) {
+
+        Cursor c = null;
+        c = this.getReadableDatabase()
+                .query(
+                        ContractMedida.MEDIDA,
+                        null,
+                        busqueda,
+                        null,
+                        null,
+                        null,
+                        orderBy);
+
+
+        return c;
+    }
+
     // Trae Todos los datos de la base
     public Cursor getAllMedidas(String orderBy, String busqueda, String limite) {
 

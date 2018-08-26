@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/borde_item_seleccion" />
+            <!-- Aquí indicamos el radio a aplicar a las esquinas -->
+            <corners android:radius="5dp"></corners>
+        </shape>
+    </item>
+    <item android:left="@dimen/item_border_seleccion"
+          android:right="@dimen/item_border_seleccion"
+          android:top="@dimen/item_border_seleccion"
+          android:bottom="@dimen/item_border_seleccion">
+        <shape
+            android:innerRadius="10dp"
+            android:shape="rectangle">
+            <solid android:color="#ffffff" />
+            <!-- Aquí indicamos el radio a aplicar a las esquinas -->
+            <corners
+                android:radius="5dp"   >
+            </corners>
+        </shape>
+    </item>
+</layer-list>
