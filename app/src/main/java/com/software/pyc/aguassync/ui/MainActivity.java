@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.CursorLoader;
@@ -85,8 +86,8 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
 
     public void actualizarDatos(){
 
-        c = medidaOpenHelper.getAllMedidas(consulta.getOrderBy(),consulta.getWhere(),consulta.getLimite());
-        //c = medidaOpenHelper.getAllMedidas(consulta.getOrderBy(),consulta.getWhere());
+        //c = medidaOpenHelper.getAllMedidas(consulta.getOrderBy(),consulta.getWhere(),consulta.getLimite());
+        c = medidaOpenHelper.getAllMedidas(consulta.getOrderBy(),consulta.getWhere());
         consulta.setFin(medidaOpenHelper.getCantAllMedidas(consulta.getOrderBy(),consulta.getWhere(),consulta.getLimite()));
         TextView usuario = findViewById(R.id.tvUser);
         usuario.setText("Pagina "+String.valueOf(consulta.getPagActual())+" de "+String.valueOf(consulta.getPaginas()));
@@ -173,8 +174,8 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
 
 
 
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+///SCROLL para el paginado
+/*        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
 
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy)
@@ -197,7 +198,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
                         recyclerView.getLayoutManager().scrollToPosition(posicionList);
                         //Do pagination.. i.e. fetch new data
                     }
-                }
+                }*/
 
  /*               boolean loading = true;
                 if(dy > 0) //check for scroll down
@@ -247,9 +248,9 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
                         }
 
                     }
-                }*/
+                }
             }
-        });
+        });*/
 
 
 
@@ -275,7 +276,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
                     new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                         @Override public void onItemClick(View view, int position) {
 
-                            RelativeLayout rl =  findViewById(R.id.rlItem);
+                            ConstraintLayout rl =  findViewById(R.id.rlItem);
 
                             List<Medida> listaMedida = adapter.getLsMedida();
 
@@ -334,7 +335,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
 
 
 //Ordenamientos
-        TextView orderByOrden = findViewById(R.id.lvOrden);
+   /*     TextView orderByOrden = findViewById(R.id.lvOrden);
         TextView orderByCodigo = findViewById(R.id.lvCodigo);
         TextView orderByNombre = findViewById(R.id.lvNombre);
         TextView orderByMedidor = findViewById(R.id.lvMedidor);
@@ -440,7 +441,7 @@ public class MainActivity extends AppCompatActivity  implements LoaderManager.Lo
                 actualizarDatos();
             }
         });
-
+*/
 /*        logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -582,7 +583,7 @@ recyclerView.setOnClickListener(new View.OnClickListener() {
             SyncAdapter.sincronizarAhora(this, false);
 
 
-            firstTime = true;
+/*            firstTime = true;
 
             progressDoalog = new ProgressDialog(MainActivity.this);
             progressDoalog.setMax(100);
@@ -590,7 +591,7 @@ recyclerView.setOnClickListener(new View.OnClickListener() {
             progressDoalog.setTitle("Recuperando datos del servidor");
             progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDoalog.setCancelable(false);
-            progressDoalog.show();
+            progressDoalog.show();*/
 
 
 
@@ -601,7 +602,7 @@ recyclerView.setOnClickListener(new View.OnClickListener() {
             SyncAdapter.sincronizarAhora(this, true);
 
 
-            firstTime = true;
+/*            firstTime = true;
 
             progressDoalog = new ProgressDialog(MainActivity.this);
             progressDoalog.setMax(100);
@@ -609,7 +610,7 @@ recyclerView.setOnClickListener(new View.OnClickListener() {
             progressDoalog.setTitle("Actualizando el Servidor");
             progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDoalog.setCancelable(false);
-            progressDoalog.show();
+            progressDoalog.show();*/
 
 
             /*            new Thread(new Runnable() {
@@ -665,7 +666,7 @@ recyclerView.setOnClickListener(new View.OnClickListener() {
 
 if (firstTime) {
    // progressDoalog.setProgress(progressDoalog.getMax());
-    progressDoalog.dismiss();
+   // progressDoalog.dismiss();
 }else {
     consulta.setFin(data.getCount());
 }
