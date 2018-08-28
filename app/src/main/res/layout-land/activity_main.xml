@@ -7,17 +7,26 @@
     android:background="@color/fondo_gris"
     tools:context="com.software.pyc.aguassync.ui.MainActivity">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
 
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:id="@+id/linearLayout4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
         <!-- Toolbar -->
 
         <include
             android:id="@+id/toolbarPrincipal"
-            layout="@layout/toolbar" />
+            layout="@layout/toolbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <!--            <android.support.v7.widget.Toolbar xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -27,235 +36,40 @@
                 app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" /-->>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <include
+            android:id="@+id/include2"
+            layout="@layout/panel_lateral"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/reciclador"
+            app:layout_constraintHeight_default="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarPrincipal"
+            app:layout_constraintWidth_default="spread" />
 
-            <include
-                layout="@layout/panel_lateral"
-                android:layout_weight="0.5" />-->
-            <!-- <RelativeLayout
-                    android:id="@+id/rlPanelLat"
-                    android:layout_width="232dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorPrimary">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/reciclador"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginStart="24dp"
+            android:foregroundGravity="center_horizontal"
+            android:padding="3dp"
+            android:scrollbars="vertical"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/include2"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarPrincipal"
+            app:layout_constraintWidth_default="spread" />
 
-                    <TextView
-                        android:id="@+id/tvUser"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:text="Usuario"
-                        android:textAppearance="@style/TextAppearance.Compat.Notification" />
-
-                    <Spinner
-                        android:id="@+id/spRuta"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_below="@+id/tvUser"
-                        android:layout_marginStart="13dp"
-                        android:layout_marginTop="42dp"
-                        android:layout_toEndOf="@+id/textView" />
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:layout_alignStart="@+id/textView"
-                        android:layout_centerVertical="true"
-                        android:text="Busqueda"
-                        android:textAlignment="viewStart"
-                        android:textSize="18sp" />
-
-                    <Spinner
-                        android:id="@+id/spBusqueda"
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/textView2" />
-
-                    <EditText
-                        android:id="@+id/etBusqueda2"
-                        style="?android:attr/editTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_below="@+id/spBusqueda"
-                        android:ems="10"
-                        android:hint="Criterio de busqueda"
-                        android:inputType="textPersonName" />
-
-                    <Button
-                        android:id="@+id/btnLogOut"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentStart="true"
-                        android:text="LogOut" />
-
-                    <Button
-                        android:id="@+id/btnBusqueda"
-                        style="?android:attr/borderlessButtonStyle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/etBusqueda2"
-                        android:layout_centerHorizontal="true"
-                        android:text="Buscar" />
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignTop="@+id/spRuta"
-                        android:layout_marginStart="18dp"
-                        android:text="Ruta"
-                        android:textAlignment="viewStart"
-                        android:textSize="18sp" />
-                </RelativeLayout>-->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal|fill_horizontal"
-                android:layout_weight="0.5"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:id="@+id/rlMedTitulos"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@color/primaryDarkColor"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:id="@+id/listRuta"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/title_margin"
-                        android:text="Ruta"
-                        android:textAlignment="center"
-                        android:textColor="@color/titulos"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/lvOrden"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/listRuta"
-                        android:layout_alignBottom="@+id/listRuta"
-                        android:layout_marginLeft="@dimen/title_margin"
-                        android:layout_toEndOf="@+id/listRuta"
-                        android:text="Orden"
-                        android:textColor="@color/titulos"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/lvCodigo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/lvOrden"
-                        android:layout_alignBottom="@+id/lvOrden"
-                        android:layout_marginLeft="@dimen/title_margin"
-                        android:layout_toEndOf="@+id/lvOrden"
-                        android:text="Código"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/titulos"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/lvNombre"
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/lvCodigo"
-                        android:layout_alignBottom="@+id/lvCodigo"
-                        android:layout_marginLeft="@dimen/title_margin"
-                        android:layout_toEndOf="@+id/lvCodigo"
-                        android:text="Nombre"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/titulos"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/lvMedidor"
-                        android:layout_width="80dp"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/lvNombre"
-                        android:layout_alignBottom="@+id/lvNombre"
-                        android:layout_marginLeft="@dimen/title_margin"
-                        android:layout_toEndOf="@+id/lvNombre"
-                        android:text="Medidor"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/titulos"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/lvPartida"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/lvAnt"
-                        android:layout_alignBottom="@+id/lvAnt"
-                        android:layout_marginLeft="@dimen/title_margin"
-                        android:layout_toEndOf="@+id/lvMedidor"
-                        android:text="Partida"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/titulos"
-                        android:textSize="24sp" />
-
-
-                    <TextView
-                        android:id="@+id/lvAnt"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/lvMedidor"
-                        android:layout_alignBottom="@+id/lvMedidor"
-                        android:layout_marginLeft="@dimen/title_margin"
-                        android:layout_toEndOf="@+id/lvPartida"
-                        android:text="Est. Anterior"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/titulos"
-                        android:textSize="24sp" />
-
-                    <TextView
-                        android:id="@+id/lvAct"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@+id/lvAnt"
-                        android:layout_alignBottom="@+id/lvAnt"
-                        android:layout_marginLeft="@dimen/title_margin"
-                        android:layout_toEndOf="@+id/lvAnt"
-                        android:text="Est. Actual"
-                        android:textAlignment="textStart"
-                        android:textColor="@color/titulos"
-                        android:textSize="24sp" />
-
-
-                </RelativeLayout>
-
-                <!-- Recycler -->
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/reciclador"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:foregroundGravity="center_horizontal"
-                    android:padding="3dp"
-                    android:scrollbars="vertical"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-                <!--
-                    <ListView
-                        android:id="@+id/lvMedidas"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent" />-->
-            </LinearLayout>
-
-        </LinearLayout>
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
 

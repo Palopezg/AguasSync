@@ -2,20 +2,23 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/fondo_gris">
 
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/rlPanelLat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@color/fondo_gris"
         android:elevation="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <!--        <Button
             android:id="@+id/btnLogOut"
@@ -31,10 +34,8 @@
         <EditText
             android:id="@+id/etIngresarMedida"
             android:layout_width="wrap_content"
-            android:layout_height="41dp"
-            android:layout_marginEnd="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="31dp"
             android:background="@android:color/background_light"
             android:digits="1234567890 "
             android:ems="10"
@@ -44,7 +45,6 @@
             android:singleLine="true"
             android:textColor="@color/borde_item"
             app:layout_constraintBottom_toTopOf="@+id/tvPLEstadoAnterior"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -66,17 +66,16 @@
             android:id="@+id/tvPLestAnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
             android:text="666"
             android:textSize="@dimen/item_medium"
             android:textStyle="bold|italic"
             app:layout_constraintStart_toEndOf="@+id/tvPLEstadoAnterior"
-            app:layout_constraintTop_toBottomOf="@+id/etIngresarMedida"
-            tools:layout_editor_absoluteX="114dp"
-            tools:layout_editor_absoluteY="93dp" />
+            app:layout_constraintTop_toBottomOf="@+id/etIngresarMedida" />
 
         <TextView
             android:id="@+id/tvObservaciones"
-            android:layout_width="208dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="22dp"
@@ -90,17 +89,21 @@
 
         <EditText
             android:id="@+id/etObservaciones"
-            android:layout_width="274dp"
-            android:layout_height="115dp"
-            android:layout_marginBottom="32dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="1dp"
             android:background="@android:color/background_light"
-            android:ems="10"
+            android:ems="100"
             android:focusedByDefault="false"
             android:hint="Ingrese las observaciones..."
             android:inputType="textPersonName"
+            android:lines="7"
+            android:maxLines="7"
+            android:minLines="3"
+            android:singleLine="false"
             android:textColor="@color/borde_item"
             android:textSize="@dimen/item_medium"
             app:layout_constraintBottom_toTopOf="@+id/btnPLAceptar"
@@ -111,12 +114,12 @@
         <Button
             android:id="@+id/btnPLAceptar"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="269dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="1dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             android:background="@color/mainVerde"
             android:elevation="5dp"
             android:text="Aceptar"
@@ -126,12 +129,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/etObservaciones" />
     </android.support.constraint.ConstraintLayout>
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="962dp" />
 
 </android.support.constraint.ConstraintLayout>

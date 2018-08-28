@@ -8,29 +8,37 @@
     android:layout_marginTop="@dimen/universal_margin"
     android:background="@drawable/borde_item"
     android:padding="@dimen/item_margin"
+    app:layout_anchorGravity="center_horizontal"
     tools:layout_editor_absoluteY="25dp">
 
-    <RelativeLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/rlItem"
         android:layout_width="420dp"
         android:layout_height="125dp"
 
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:elevation="@dimen/item_margin"
         android:padding="@dimen/item_margin"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
             android:id="@+id/itemNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/itemRuta"
+            android:layout_marginLeft="@dimen/universal_margin"
             android:text="Nombre"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/darker_gray"
             android:textSize="@dimen/item_medium"
+            app:layout_constraintStart_toEndOf="@+id/itemRuta"
+            app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="75dp"
             tools:layout_editor_absoluteY="16dp" />
 
@@ -38,12 +46,12 @@
             android:id="@+id/itemAnt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/itemRuta"
-            android:layout_toEndOf="@+id/itemPartida"
             android:text="Estado Anterior"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/black"
             android:textSize="@dimen/item_medium"
+            app:layout_constraintBottom_toBottomOf="@+id/itemRuta"
+            app:layout_constraintStart_toEndOf="@+id/itemPartida"
             tools:layout_editor_absoluteX="193dp"
             tools:layout_editor_absoluteY="323dp" />
 
@@ -52,6 +60,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/universal_margin"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp" />
 
@@ -60,21 +70,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_alignBaseline="@+id/itemPartida"
-            android:layout_alignBottom="@+id/itemPartida"
-            android:layout_alignParentEnd="true"
             android:text="Medidor"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/black"
             android:textSize="@dimen/item_large"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBaseline_toBaselineOf="@+id/itemPartida"
+            app:layout_constraintBottom_toBottomOf="@+id/itemPartida"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/itemRuta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/textView6"
             android:layout_marginBottom="@dimen/universal_margin"
             android:layout_marginRight="@dimen/universal_margin"
             android:layout_marginTop="@dimen/universal_margin"
@@ -82,6 +90,8 @@
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/black"
             android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="20dp"
             tools:layout_editor_absoluteY="19dp" />
 
@@ -89,15 +99,15 @@
             android:id="@+id/itemPartida"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/itemNombre"
-            android:layout_alignTop="@+id/imageView"
             android:layout_marginLeft="@dimen/item_margin"
-            android:layout_toEndOf="@+id/imageView"
             android:text="Partida"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/black"
             android:textSize="@dimen/item_large"
             android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/itemNombre"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="290dp" />
 
@@ -105,13 +115,13 @@
             android:id="@+id/itemCodigo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/itemAnt"
-            android:layout_alignBottom="@+id/itemAnt"
-            android:layout_alignStart="@+id/itemNombre"
             android:text="Código"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/black"
             android:textSize="@dimen/item_medium"
+            app:layout_constraintBaseline_toBaselineOf="@+id/itemAnt"
+            app:layout_constraintBottom_toBottomOf="@+id/itemAnt"
+            app:layout_constraintStart_toStartOf="@+id/itemNombre"
             tools:layout_editor_absoluteX="474dp"
             tools:layout_editor_absoluteY="104dp" />
 
@@ -119,13 +129,13 @@
             android:id="@+id/imgEstado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/itemOrden"
             android:layout_marginEnd="18dp"
-            android:layout_toStartOf="@+id/imageView"
             android:adjustViewBounds="true"
             android:background="@android:color/holo_green_dark"
             android:cropToPadding="false"
             android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/itemOrden"
             app:srcCompat="@drawable/ic_sync_ok"
             tools:layout_editor_absoluteX="559dp"
             tools:layout_editor_absoluteY="418dp" />
@@ -134,12 +144,12 @@
             android:id="@+id/itemOrden"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView9"
-            android:layout_below="@+id/textView9"
             android:text="Orden"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/black"
             android:textSize="@dimen/item_medium"
+            app:layout_constraintStart_toStartOf="@+id/textView9"
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
             tools:layout_editor_absoluteX="463dp"
             tools:layout_editor_absoluteY="59dp" />
 
@@ -147,12 +157,12 @@
             android:id="@+id/itemAct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/textView8"
-            android:layout_alignTop="@+id/imgEstado"
             android:text="Estado Actual"
             android:textAppearance="@style/TextAppearance.AppCompat"
             android:textColor="@android:color/black"
             android:textSize="@dimen/item_medium"
+            app:layout_constraintStart_toStartOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/imgEstado"
             tools:layout_editor_absoluteX="236dp"
             tools:layout_editor_absoluteY="251dp" />
 
@@ -160,55 +170,57 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:background="@android:color/background_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/dark_header" />
 
         <TextView
             android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/itemAct"
-            android:layout_below="@+id/itemAct"
             android:text="Estado Actual"
             android:textColor="@android:color/darker_gray"
             android:textSize="@dimen/item_small"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/itemAct"
+            app:layout_constraintTop_toBottomOf="@+id/itemAct" />
 
         <TextView
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/itemAnt"
-            android:layout_below="@+id/itemAnt"
             android:text="Estado Anterior"
             android:textColor="@android:color/darker_gray"
             android:textSize="@dimen/item_small"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/itemAnt"
+            app:layout_constraintTop_toBottomOf="@+id/itemAnt" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/itemCodigo"
-            android:layout_below="@+id/itemCodigo"
             android:text="Codigo"
             android:textColor="@android:color/darker_gray"
             android:textSize="@dimen/item_small"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/itemCodigo"
+            app:layout_constraintTop_toBottomOf="@+id/itemCodigo" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/itemOrden"
-            android:layout_below="@+id/itemOrden"
             android:text="Orden"
             android:textColor="@android:color/darker_gray"
             android:textSize="@dimen/item_small"
-            android:textStyle="italic" />
-    </RelativeLayout>
+            android:textStyle="italic"
+            app:layout_constraintStart_toStartOf="@+id/itemOrden"
+            app:layout_constraintTop_toBottomOf="@+id/itemOrden" />
+    </android.support.constraint.ConstraintLayout>
 
 
 </android.support.constraint.ConstraintLayout>
